@@ -43,6 +43,6 @@ def upload():
     return send_from_directory(app.config['RESULT_FOLDER'], result_name)
 @app.route('/result/<image_name>', methods=['GET'])
 def result(image_name):
-    return send_from_directory(app.config['RESULT_FOLDER'], image_name, mimetype='image/png')
+    return send_from_directory(app.config['RESULT_FOLDER'], image_name, mimetype='image/jpg')
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
