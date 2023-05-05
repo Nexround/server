@@ -25,7 +25,7 @@ def inference(image_path):
     
     image_tensor = transform(Image.open(image_path))
     with torch.no_grad():
-        output = model(image_tensor.unsqueeze(0))
+        output, _, _ = model(image_tensor.unsqueeze(0))
     result_image = tensor2im(output)
     result_image = transforms.ToPILImage()(result_image)
 
