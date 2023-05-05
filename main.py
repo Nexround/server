@@ -5,7 +5,8 @@ import torch
 import torchvision.transforms as transforms
 from PIL import Image
 import os
-from model.anime_gan import Generator
+# from model.anime_gan import Generator
+from networks import *
 
 transform = transforms.Compose([
     transforms.Resize((256,256)),
@@ -16,8 +17,9 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'upload'
 app.config['RESULT_FOLDER'] = 'result'
 CORS(app)
-model = Generator()
-model.load_state_dict(torch.load('model/model.pth', map_location='cpu'))
+# model = Generator()
+# model.load_state_dict(torch.load('model/model.pth', map_location='cpu'))
+model = torch.load('model/model.pth', map_location='cpu')
 model.eval()
 def inference(image_path):
     
